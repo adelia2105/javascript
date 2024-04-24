@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validasi Masukan</title>
+    <script type="text/javascript">
+    function cekForm(form) {
+        // Periksa nama
+        if (form.nama.value == "") {
+            alert("Nama harus dimasukkan");
+            form.nama.focus();
+            form.nama.select();
+            return false;
+        }
+        // Periksa NIM
+        if (form.nim.value == "") {
+            alert("NIM harus dimasukkan");
+            form.nim.focus();
+            form.nim.select();
+            return false;
+        }
+    
+        // Periksa prodi
+        if (form.prodi.value == "") {
+            alert("Program studi harus dimasukkan");
+            form.prodi.focus();
+            form.prodi.select();
+            return false;
+        }
+        // Periksa kelas
+        if (form.kelas.value == "") {
+            alert("Kelas harus dimasukkan");
+            form.kelas.focus();
+            form.kelas.select();
+            return false;
+        }
+
+        alert("Terima kasih, " + form.nama.value);
+        return true;
+    }
+    </script>
+</head>
+<body>
+    <form name="formku">
+        <pre>
+        Nama   : <input type="text" name="nama"><br>
+        NIM    : <input type="text" name="nim"><br>
+        Prodi  : <input type="text" name="prodi"><br>
+        Kelas  : <input type="text" name="kelas"><br>
+        <input type="button" value="Kirim" onclick="cekForm(this.form)">
+        </pre>
+    </form>
+</body>
+</html>

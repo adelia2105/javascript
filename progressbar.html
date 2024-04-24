@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Download Dialog Example</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+</head>
+<body>
+	<button id="downloadButton">Download</button>
+
+	<div id="downloadDialog" title="Download">
+		<p>Download in progress...</p>
+		<div id="progressBar"></div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			// Initialize the progress bar
+			$('#progressBar').progressbar({
+				value: 0
+			});
+
+			// Initialize the download dialog
+			$('#downloadDialog').dialog({
+				autoOpen: false,
+				modal: true,
+				buttons: {
+					Cancel: function() {
+						$(this).dialog('close');
+					}
+				}
+			});
+
+			// Add a click event listener to the Download button
+			$('#downloadButton').click(function() {
+				// Simulate a download with a progress bar
+				var totalBytes = 100000; // Total number of bytes to download
+				var downloadBytes = 0; // Number of bytes downloaded so far
+				var progressBar = $('#progressBar');
+
+				// Open the download dialog
+				$('#downloadDialog').dialog('open');
+
+				// Simulate the download by increasing the downloaded bytes every 50 milliseconds
+				var intervalId = setInterval(function() {
+					downloadBytes += Math.floor(Math.random() * 1000); // Randomly increase the downloaded bytes by up to 1000 bytes
+					var percentage = (downloadBytes / totalBytes) * 100; // Calculate the percentage of bytes downloaded
+					progressBar.progressbar('value', percentage); // Update the progress bar
+
+					if (downloadBytes >= totalBytes) {
+						clearInterval(intervalId); // Stop the interval when the download is complete
+						$('#downloadDialog').dialog('close'); // Close the download dialog
+					}
+				}, 50);
+			});
+		});
+	</script>
+</body>
+</html>

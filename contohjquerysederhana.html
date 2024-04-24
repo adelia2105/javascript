@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contoh jQuery Sederhana</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("#myButton").click(function(){
+            $("#myText").text("Halo, jQuery telah mengubah teks ini!");
+        });
+    });
+    </script>
+</head>
+<body>
+    <p id="myText">Teks awal sebelum diubah.</p>
+    <button id="myButton">Ubah Teks</button>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      text-align: center;
+      padding-top: 50px;
+      font-size: 3em;
+      color: #333;
+    }
+
+    #clock {
+      font-size: 1.5em;
+      color: #666;
+      text-shadow: 1px 1px #fff, 1px -1px #fff, -1px 1px #fff, -1px -1px #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"></div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const options = {
+        weekday: 'long',
+        year: 'numeric',
+        day: 'numeric',
+        month: 'long',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+      // Menggunakan lokal 'en-GB' untuk menampilkan tanggal sebelum bulan
+      const formattedTime = now.toLocaleString('en-GB', options);
+      document.getElementById('clock').innerHTML = formattedTime;
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+</body>
+</html>
